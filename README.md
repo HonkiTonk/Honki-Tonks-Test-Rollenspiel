@@ -3,7 +3,11 @@ Das erste Spiel das ich in Ada angefangen habe zu entwickeln. Es ist grauenhaft,
 
 The first game I started developing in Ada. It is horrific, confusing and will not be developed any further.
 
+Version: 0.00.0050
+
 Mich unterstützen/Support me:
+
+PayPal: https://www.paypal.com/paypalme/tpHonkiTonk
 
 Patreon: https://www.patreon.com/HonkiTonk
 
