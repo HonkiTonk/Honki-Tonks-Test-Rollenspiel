@@ -1,9 +1,17 @@
+with Karten;
+with GlobaleVariablen;
+with EinrichtungDatenbank;
+with UnmoeglicheRichtung;
+
 package body Bewegungssystem is
 
-   procedure Bewegung (Richtung : in Integer) is
-   begin
+   procedure Bewegung
+     (Richtung : in Integer)
+   is begin
       
-      case Richtung is
+      case
+        Richtung
+      is
          when 1 => -- Nach oben
             YPlus := -1;
             
@@ -35,7 +43,9 @@ package body Bewegungssystem is
       
       BewegungErlaubt := Kollisionsabfrage (YPlus, XPlus);
       
-      case BewegungErlaubt is
+      case
+        BewegungErlaubt
+      is
          when True =>
             GlobaleVariablen.CharakterPosition (GlobaleVariablen.Ort).YPosition := GlobaleVariablen.CharakterPosition (GlobaleVariablen.Ort).YPosition + YPlus;
             GlobaleVariablen.CharakterPosition (GlobaleVariablen.Ort).XPosition := GlobaleVariablen.CharakterPosition (GlobaleVariablen.Ort).YPosition + XPlus;
@@ -48,11 +58,18 @@ package body Bewegungssystem is
    
    
    
-   function Kollisionsabfrage (Y, X : in Integer) return Boolean is
-   begin
+   function Kollisionsabfrage
+     (Y : in Integer;
+      X : in Integer)
+      return Boolean
+   is begin
       
-      if EinrichtungDatenbank.EinrichtungListe (Karten.Karte (GlobaleVariablen.Ort, GlobaleVariablen.CharakterPosition (GlobaleVariablen.Ort).YPosition + Y, GlobaleVariablen.CharakterPosition (GlobaleVariablen.Ort).XPosition + X)).Passierbar = True then
+      if
+        EinrichtungDatenbank.EinrichtungListe (Karten.Karte (GlobaleVariablen.Ort, GlobaleVariablen.CharakterPosition (GlobaleVariablen.Ort).YPosition + Y,
+                                               GlobaleVariablen.CharakterPosition (GlobaleVariablen.Ort).XPosition + X)).Passierbar = True
+      then
          return True;
+         
       else
          return False;
       end if;

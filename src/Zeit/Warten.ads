@@ -1,16 +1,16 @@
-with Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded, Zeit, Ada.Integer_Text_IO, ImAusruhen;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package Warten is
+
+   procedure Warten;
+
+private
 
    WartenLäuft : Boolean := True;
    SchlafenLäuft : Boolean := True;
 
-   Text : Unbounded_Wide_String;
-
    Wert : Integer;
 
-   procedure Warten;
-
+   Text : Unbounded_Wide_String;
 
 end Warten;

@@ -1,13 +1,13 @@
-with Ada.Wide_Text_IO;
-use Ada.Wide_Text_IO;
-
 package Zeit is
 
-   Minute : Integer := 0;
-   Stunde : Integer := 6;
-   Tag : Integer := 1;
+   Minute : Natural := 0;
+   Stunde : Natural := 6;
+   Tag : Natural := 1;
 
    procedure Uhrzeit;
-   procedure UhrzeitNutzer (ErhöhenStunde, ErhöhenMinute : in Integer);
+
+   procedure UhrzeitNutzer
+     (ErhöhenStunde : in Natural;
+      ErhöhenMinute : in Natural);
 
 end Zeit;

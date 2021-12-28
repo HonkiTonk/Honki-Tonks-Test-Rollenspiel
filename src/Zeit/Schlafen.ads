@@ -1,12 +1,11 @@
-with Ada.Wide_Text_IO, Zeit, ImAusruhen;
-use Ada.Wide_Text_IO;
-
 package Schlafen is
-
+   
+   procedure Schlafen;
+   
+private
+   
    SchlafenLäuft : Boolean := True;
 
    Wert : Integer;
-   
-   procedure Schlafen;
 
 end Schlafen;

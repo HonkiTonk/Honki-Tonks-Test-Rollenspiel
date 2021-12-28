@@ -1,17 +1,24 @@
+with Schlafsaal;
+with Verbindungsgang;
+with VomSpielerWeggeworfen;
+
 package body LokalerHubStuetzpunkt is
 
-   function VerteilungLokalStützpunkt return Integer is
-   begin
+   function VerteilungLokalStützpunkt
+     return Integer
+   is begin
 
       Läuft := True;
 
       VerteilungLokalStützpunktSchleife:
-      while Läuft = True loop
+      while Läuft loop
 
          VomSpielerWeggeworfen.Ort := OrteAuswahlLokal;
 
-         case OrteAuswahlLokal is -- 100 .. 199
-
+         -- 100 .. 199
+         case
+           OrteAuswahlLokal
+         is
             when -1 | 0 | 2 =>
                return OrteAuswahlLokal;
 
@@ -25,14 +32,12 @@ package body LokalerHubStuetzpunkt is
                OrteAuswahlLokal := 0;
 
             when others =>
-               Put_Line ("Sollte niemals aufgerufen werden LokalerHubStützpunkt in Schleife.");
-
+               raise Program_Error;
          end case;
 
       end loop VerteilungLokalStützpunktSchleife;
 
-      Put_Line ("Sollte niemals aufgerufen werden LokalerHubStützpunkt nach Schleife.");
-      return 0;
+      raise Program_Error;
 
    end VerteilungLokalStützpunkt;
 

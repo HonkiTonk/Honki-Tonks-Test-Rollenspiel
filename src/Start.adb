@@ -1,26 +1,30 @@
-with Ada.Wide_Text_IO, Schwierigkeitsgrad, Hauptmenue, GlobalerHub, Charaktererstellung, StandardAuswahl, Laden, Ada.Strings.Wide_Unbounded, AllesAufStandardSetzen, Nicht, GanzeZahl;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
+
+with Schwierigkeitsgrad;
+with Hauptmenue;
+with GlobalerHub;
+with Charaktererstellung;
+with StandardAuswahl;
+-- with Laden;
+with AllesAufStandardSetzen;
+with Nicht;
 
 procedure Start is
 
-   Wert : Integer := 0;
    SchonMalImSpielGewesen : Boolean := False;
-
-   Text : Unbounded_Wide_String;
-   HauptmenüEingabe : Unbounded_Wide_String;
-
-   Hauptmenü1 : Integer := 0;
-   Hauptmenü2 : Integer := 0;
-   Hauptmenü3 : Integer := 0;
-
    HauptmenüAuswahl : Boolean := True;
+
+   Wert : Integer := 0;
+   Hauptmenü : Integer := 0;
 
 begin
 
    HauptmenüSchleife:
-   while HauptmenüAuswahl = True loop
+   while HauptmenüAuswahl loop
 
-      case Wert is
+      case
+        Wert
+      is
          when 2 =>
             null;
 
@@ -38,11 +42,11 @@ begin
             Wert := StandardAuswahl.StandardAuswahl;
 
             New_Line;
-
       end case;
 
-      case Wert is
-
+      case
+        Wert
+      is
          when -1 =>
             HauptmenüAuswahl := False;
 
@@ -50,63 +54,65 @@ begin
             Put_Line ("Sie befinden sich bereits im Hauptmenü.");
 
          when 1 =>
-            Hauptmenü1 := Charaktererstellung.Erstellung;
-            case Hauptmenü1 is
-
+            case
+              Charaktererstellung.Erstellung
+            is
                when 0 =>
                   null;
 
                when 1 =>
-                  Hauptmenü2 := Schwierigkeitsgrad.SchwierigkeitAuswählen;
-                  case Hauptmenü2 is
-
+                  case
+                    Schwierigkeitsgrad.SchwierigkeitAuswählen
+                  is
                      when 0 =>
                         null;
 
                      when 1 =>
-                        case SchonMalImSpielGewesen is
-
+                        case
+                          SchonMalImSpielGewesen
+                        is
                            when False =>
-                              Hauptmenü3 := GlobalerHub.VerteilungGlobal;
+                              Hauptmenü := GlobalerHub.VerteilungGlobal;
                               SchonMalImSpielGewesen := True;
 
                            when True =>
                               AllesAufStandardSetzen.AufStandardSetzen;
-                              Hauptmenü3 := GlobalerHub.VerteilungGlobal;
-
+                              Hauptmenü := GlobalerHub.VerteilungGlobal;
                         end case;
 
-                        case Hauptmenü3 is
-
+                        case
+                          Hauptmenü
+                        is
                            when -1 =>
                               HauptmenüAuswahl := False;
 
                            when 2 =>
-                              null;--Laden.Laden;
+                              -- Laden.Laden;
+                              null;
 
                            when others =>
                               null;
-
                         end case;
 
                      when others =>
                         HauptmenüAuswahl := False;
-
                   end case;
 
                when 2 =>
-                  null;--Laden.Laden;
+                  -- Laden.Laden;
+                  null;
 
                when others =>
                   HauptmenüAuswahl := False;
-
             end case;
 
          when 2 =>
-            null;--Laden.Laden;
+            -- Laden.Laden;
+            null;
 
          when 3 =>
-            Nicht.Nicht; -- Speichern
+            -- Speichern
+            Nicht.Nicht;
 
          when 4 =>
             Hauptmenue.Hauptmenü;
@@ -117,7 +123,6 @@ begin
 
          when others =>
             null;
-
       end case;
 
    end loop HauptmenüSchleife;

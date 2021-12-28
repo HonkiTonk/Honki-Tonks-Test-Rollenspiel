@@ -1,18 +1,24 @@
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
+
+with Zeit;
+with ImAusruhen;
+
 package body Schlafen is
 
-   procedure Schlafen is
-   begin
+   procedure Schlafen
+   is begin
       
       SchlafenSchleife:
-      while SchlafenLäuft = True loop
+      while SchlafenLäuft loop
         
          Put_Line ("Wie lange möchten sie schlafen?");
          Put_Line ("Bis Morgen, Mittag, Abend, Mitternacht oder Gar nicht?");
 
          Wert := ImAusruhen.ImAusruhen;
          
-         case Wert is
-            
+         case
+           Wert
+         is
             when 0 =>
                Zeit.UhrzeitNutzer (0, Wert);
 
@@ -27,7 +33,6 @@ package body Schlafen is
 
             when others =>
                null;
-
          end case;
             
       end loop SchlafenSchleife;

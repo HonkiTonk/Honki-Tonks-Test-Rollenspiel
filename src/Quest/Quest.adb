@@ -1,19 +1,27 @@
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
+
+with Nicht;
+with ImQuest;
+
 package body Quest is
 
-   function QuestÜbersicht return Integer is
-   begin
+   function QuestÜbersicht
+     return Integer
+   is begin
       
       Läuft := True;
       
       QuestSchleife:
-      while Läuft = True loop
+      while Läuft loop
          
          Put_Line ("");
-         --Informationen.QuestBefehle;
+         -- Informationen.QuestBefehle;
 
          Wert := ImQuest.ImQuest;
          
-         case Wert is
+         case
+           Wert
+         is
             when -1 .. 2 =>
                return Wert;
                
@@ -26,15 +34,15 @@ package body Quest is
       
       end loop QuestSchleife;
       
-      Put_Line ("Sollte niemals aufgerufen werden Quest.QuestÜbersicht nach Schleife.");
-      return 0;
+      raise Program_Error;
       
    end QuestÜbersicht;
    
    
    
-   function Quest return Integer is
-   begin
+   function Quest
+     return Integer
+   is begin
       
       return 0;
       

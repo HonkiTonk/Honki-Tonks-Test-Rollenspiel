@@ -1,8 +1,14 @@
-with Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package Questdatenbank is
-
+ 
+   procedure Questdatenbank
+     (QuestID : in Integer;
+      Zustand : in Integer);
+   
+private
+   
    type Quest is record
       
       Hauptquest : Boolean;
@@ -13,9 +19,7 @@ package Questdatenbank is
    type QuestListeArray is array (1 .. 2) of Quest;
    QuestListe : constant QuestListeArray := ((True, To_Unbounded_Wide_String ("Was ist los?")), -- Hauptquests
                                     
-                                    -- Nebenquests
-                                    (False, To_Unbounded_Wide_String ("Test")));
-   
-   procedure Questdatenbank (QuestID, Zustand : in Integer);
+                                             -- Nebenquests
+                                             (False, To_Unbounded_Wide_String ("Test")));
 
 end Questdatenbank;

@@ -1,17 +1,25 @@
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
+
+with ImSpiel;
+with GegnerFestlegen;
+with Nicht;
+
 package body Verbindungsgang is
 
-   function Gang return Integer is
-   begin
+   function Gang
+     return Integer
+   is begin
 
       Info;
 
       SchlafsaalSchleife:
-      while Läuft = True loop
+      while Läuft loop
 
          Wert := ImSpiel.ImSpiel;
 
-         case Wert is
-
+         case
+           Wert
+         is
             when -1 | 0 | 2 =>
                return Wert;
 
@@ -23,8 +31,9 @@ package body Verbindungsgang is
 
             when 10 .. 15 =>
                Wert := 0; -- Auswählen (Wert);
-               case Wert is
-
+               case
+                 Wert
+               is
                   when -1 | 0 | 2 =>
                      return Wert;
 
@@ -33,13 +42,13 @@ package body Verbindungsgang is
 
                   when others =>
                      null;
-
                end case;
 
             when 16 =>
                Bewegung := 0; -- Gehen;
-               case Bewegung is
-
+               case
+                 Bewegung
+               is
                   when -1 | 0 | 2 =>
                      return Bewegung;
 
@@ -51,7 +60,6 @@ package body Verbindungsgang is
 
                   when others =>
                      null;
-
                end case;
 
             when 17 =>
@@ -59,20 +67,18 @@ package body Verbindungsgang is
 
             when others =>
                null;
-
          end case;
 
       end loop SchlafsaalSchleife;
 
-      Put_Line ("Sollte niemals aufgerufen werden LokalerHubStützpunkt.Schlafsaal nach Schleife.");
-      return 0;
+      raise Program_Error;
 
    end Gang;
 
 
 
-   procedure Info is
-   begin
+   procedure Info
+   is begin
 
       Put_Line ("Sie befinden sich im Schlafsaal ihres Stützpunktes.");
       Put_Line ("");

@@ -1,16 +1,23 @@
+with LokalerHubStuetzpunkt;
+with Zeit;
+
 package body GlobalerHub is
 
-   function VerteilungGlobal return Integer is
+   function VerteilungGlobal
+     return Integer
+   is
       
       task ZeitStart;
       
-      task body ZeitStart is
-      begin
+      task body ZeitStart
+      is begin
 
          delay 0.01;
          
          while OrteAuswahlGlobal /= -1 or OrteAuswahlGlobal /= 0 or OrteAuswahlGlobal /= 2 loop
+            
             Zeit.Uhrzeit;
+            
          end loop;
          
       end ZeitStart;
@@ -20,10 +27,12 @@ package body GlobalerHub is
       SpielLäuft := True;
 
       SpielLäuftSchleife:
-      while SpielLäuft = True loop
-      
-         case OrteAuswahlGlobal is -- 10 .. 99
-            
+      while SpielLäuft loop
+       
+         -- 10 .. 99
+         case
+           OrteAuswahlGlobal
+         is
             when -1 | 0 | 2 =>
                return OrteAuswahlGlobal;
             
@@ -37,14 +46,12 @@ package body GlobalerHub is
                OrteAuswahlGlobal := 0;
                
             when others =>
-               Put_Line ("Sollte niemals aufgerufen werden GlobalerHub, in Schleife.");
-               
+               raise Program_Error;
          end case;
 
       end loop SpielLäuftSchleife;
             
-      Put_Line ("Sollte niemals aufgerufen werden GlobalerHub nach Schleife.");
-      return 0;
+      raise Program_Error;
       
    end VerteilungGlobal;
 

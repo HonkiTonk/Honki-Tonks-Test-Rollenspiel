@@ -1,9 +1,13 @@
 package body Questdatenbank is
 
-   procedure Questdatenbank (QuestID, Zustand : in Integer) is
-   begin
+   procedure Questdatenbank
+     (QuestID : in Integer;
+      Zustand : in Integer)
+   is begin
       
-      case QuestID is
+      case
+        QuestID
+      is
          when 1 =>
             Put_Line ("Gerade bin ich im Schlafsaal meines Stützpunktes aufgewacht.");
             Put_Line ("Merkwürdigerweise ist keiner meiner Kameraden hier, obwohl es früher Morgen ist und kein Alarmzustand herrscht.");
@@ -12,27 +16,36 @@ package body Questdatenbank is
             
             New_Line;
       
-            if Zustand > 1 then
+            if
+              Zustand > 1
+            then
                Put_Line ("Im Gang vor meinem Schlafsaal befinden sich mehrere mir unbekannte Personen.");
                Put_Line ("Sie starren merkwürdigerweise nur stumpf die Decke an und scheinen mich gar nicht zu bemerken.");
+               
             else
                null;
             end if;
             
             New_Line;
             
-            if Zustand > 2 then
+            if
+              Zustand > 2
+            then
                Put_Line ("Als ich die komischen Personen ansprach griffen sie mich an.");
                Put_Line ("Glücklicherweise konnte ich sie töten.");
                Put_Line ("Ist das hier etwa ein Angriff? Ich muss sofort jemanden finden der Bescheid weiß.");
+               
             else
                null;
             end if;
       
             New_Line;
             
-            if Zustand > 999 then
+            if
+              Zustand > 999
+            then
                Put_Line ("Auftrag erledigt.");
+               
             else
                null;
             end if;
@@ -41,7 +54,7 @@ package body Questdatenbank is
             null;
             
          when others =>
-            Put_Line ("Sollte niemals aufgerufen werden, Questdatenbank.Questdatenbank when others =>");
+            raise Program_Error;
       end case;
       
    end Questdatenbank;

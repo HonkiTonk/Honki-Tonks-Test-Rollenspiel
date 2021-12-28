@@ -1,14 +1,16 @@
-with Ada.Wide_Text_IO, Nicht, ImQuest;
-use Ada.Wide_Text_IO;
-
 package Quest is
    
+   function Quest
+     return Integer;
+   
+private
+      
    Läuft : Boolean;
    LaufendeQuest : Boolean;
 
    Wert : Integer;
 
-   function QuestÜbersicht return Integer;   
-   function Quest return Integer;
+   function QuestÜbersicht
+     return Integer;
 
 end Quest;
