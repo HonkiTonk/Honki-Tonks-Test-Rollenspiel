@@ -1,12 +1,19 @@
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
+
+with ImInventar;
+with InventarBefehle;
+with Nicht;
+
 package body Inventar is
    
-   function Inventar return Integer is
-   begin
+   function Inventar
+     return Integer
+   is begin
       
       Läuft := True;
       
       InventarSchleife:
-      while Läuft = True loop
+      while Läuft loop
       
          Put_Line ("Sie befinden sich im Inventar.");
          Put_Line ("Was möchten sie tun?");
@@ -14,8 +21,9 @@ package body Inventar is
       
          Wert := ImInventar.ImInventar;
 
-         case Wert is
-            
+         case
+           Wert
+         is
             when -1 .. 2 =>
                return Wert;
                
@@ -24,13 +32,11 @@ package body Inventar is
                
             when others =>
                null;
-               
          end case;
                   
       end loop InventarSchleife;
       
-      Put_Line ("Sollte niemals aufgerufen werden Inventar.Inventar nach Schleife.");
-      return 0;
+      raise Program_Error;
       
    end Inventar;
      

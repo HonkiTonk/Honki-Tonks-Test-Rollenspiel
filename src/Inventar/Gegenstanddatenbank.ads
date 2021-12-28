@@ -1,5 +1,4 @@
-with Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package Gegenstanddatenbank is
 
@@ -111,7 +110,8 @@ package Gegenstanddatenbank is
                                                                   (5001, 0.1, 50, 8, 3, To_Unbounded_Wide_String ("Gepolsterte Uniform"), To_Unbounded_Wide_String ("Eine gepolsterte Uniform.")),
                                                                   (5002, 0.1, 50, 12, 3, To_Unbounded_Wide_String ("Gepanzerte Uniform"), To_Unbounded_Wide_String ("Eine Uniform die mit Panzerplatten verstärkt ist.")),
                                                                   (5003, 0.1, 50, 20, 3, To_Unbounded_Wide_String ("Kampfanzug"), To_Unbounded_Wide_String ("Ein wiederstandsfähiger Kampfanzug.")),
-                                                                  (5004, 0.1, 50, 35, 3, To_Unbounded_Wide_String ("Schwerer Kampfanzug"), To_Unbounded_Wide_String ("Eine weiterverstärkte Version des normalen Kampfanzugs.")));
+                                                                  (5004, 0.1, 50, 35, 3, To_Unbounded_Wide_String ("Schwerer Kampfanzug"),
+                                                                   To_Unbounded_Wide_String ("Eine weiterverstärkte Version des normalen Kampfanzugs.")));
 
    type HelmGegenstand is record
 

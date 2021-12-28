@@ -1,11 +1,15 @@
-with Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded, SortierenInventar, Charaktere, EinWort, Gegenstanddatenbank, Ada.Strings.Wide_Maps.Wide_Constants, Zustaende, GesamterBesitz;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package Benutzen is
 
+   function Benutzen
+     return Boolean;
+
+private
+
    GegenstandName : Unbounded_Wide_String;
 
-   function Benutzen (Kämpfen : in Boolean) return Boolean;
-   procedure HeilGegenstandBenutzen (IDPosition : in Integer);
+   procedure HeilGegenstandBenutzen
+     (IDPosition : in Integer);
 
 end Benutzen;

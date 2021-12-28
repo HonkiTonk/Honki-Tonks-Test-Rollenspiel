@@ -1,7 +1,7 @@
 package body Ausgeruestet is
 
-   procedure Ausgerüstet is
-   begin
+   procedure Ausgerüstet
+   is begin
       
       null;
       

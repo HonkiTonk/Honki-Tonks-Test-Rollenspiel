@@ -1,7 +1,11 @@
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
+
+with Charaktere;
+
 package body SortierenInventar is
 
-   procedure SortierenInventar is
-   begin
+   procedure SortierenInventar
+   is begin
       
       Charaktere.Hauptcharakter.InventarZumSortieren := Charaktere.Hauptcharakter.Inventar;
       Charaktere.Hauptcharakter.Inventar := (others => (0, 0, To_Unbounded_Wide_String ("")));
@@ -11,11 +15,14 @@ package body SortierenInventar is
          SortierenInnenSchleife:
          for B in Charaktere.Hauptcharakter.Inventar'Range loop
             
-            if Charaktere.Hauptcharakter.InventarZumSortieren (B).ID /= 0 then
+            if
+              Charaktere.Hauptcharakter.InventarZumSortieren (B).ID /= 0
+            then
                Charaktere.Hauptcharakter.Inventar (A).ID := Charaktere.Hauptcharakter.InventarZumSortieren (B).ID;
                Charaktere.Hauptcharakter.Inventar (A).Menge := Charaktere.Hauptcharakter.InventarZumSortieren (B).Menge;
                Charaktere.Hauptcharakter.InventarZumSortieren (B).ID := 0;
-               exit SortierenInnenSchleife;               
+               exit SortierenInnenSchleife;      
+               
             else
                null;               
             end if;

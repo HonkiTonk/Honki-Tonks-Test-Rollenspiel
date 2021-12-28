@@ -1,37 +1,52 @@
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
+
+with Gegnerdatenbank;
+with WortZuGanzeZahl;
+with EinWort;
+with ImKampf;
+with Nicht;
+with KampfBefehle;
+
 package body Kampfsystem is
 
-   function Kampf (Gegner : in GegnerArray) return Integer is
-   begin
+   function Kampf
+     (GegnerExtern : in GegnerArray)
+      return Integer
+   is begin
 
       SpielerBesiegt := False;
       GegnerBesiegt := False;
-      Reihenfolge := Gegner;
+      Reihenfolge := GegnerExtern;
       Läuft := True;
 
       GegnerZurücksetzenSchleife:
       for ZurücksetzenGegnerLP in Gegner'Range loop
+         
          Gegnerdatenbank.GegnerListe (Gegner (ZurücksetzenGegnerLP)).AktuelleLebenspunkteGegner := Gegnerdatenbank.GegnerListe (Gegner (ZurücksetzenGegnerLP)).GesamteLebenspunkteGegner;
+         
       end loop GegnerZurücksetzenSchleife;
 
       KampfSchleife:
-      while Läuft = True loop
+      while Läuft loop
 
-         case GegnerBesiegt is
+         case
+           GegnerBesiegt
+         is
             when True =>
                return 1;
                
             when False =>
                null;
-               
          end case;
          
-         case SpielerBesiegt is
+         case
+           SpielerBesiegt
+         is
             when True =>
                return -1;
                
             when False =>
                null;
-               
          end case;
 
          Angegriffen := False;
@@ -42,16 +57,26 @@ package body Kampfsystem is
             ReihenfolgePrüfenInnenSchleife:
             for PrüfenInnen in Reihenfolge'Range loop
                
-               if Gegnerdatenbank.GegnerListe (Reihenfolge (PrüfenAußen)).GeschwindigkeitGegner > Gegnerdatenbank.GegnerListe (Reihenfolge (PrüfenInnen)).GeschwindigkeitGegner and PrüfenAußen > PrüfenInnen then
+               if
+                 Gegnerdatenbank.GegnerListe (Reihenfolge (PrüfenAußen)).GeschwindigkeitGegner > Gegnerdatenbank.GegnerListe (Reihenfolge (PrüfenInnen)).GeschwindigkeitGegner
+                 and
+                   PrüfenAußen > PrüfenInnen
+               then
                   IDZwischenspeicher1 := Reihenfolge (PrüfenAußen);
                   IDZwischenspeicher2 := Reihenfolge (PrüfenInnen);
                   Reihenfolge (PrüfenAußen) := IDZwischenspeicher2;
                   Reihenfolge (PrüfenInnen) := IDZwischenspeicher1;
-               elsif Gegnerdatenbank.GegnerListe (Reihenfolge (PrüfenAußen)).GeschwindigkeitGegner < Gegnerdatenbank.GegnerListe (Reihenfolge (PrüfenInnen)).GeschwindigkeitGegner and PrüfenAußen < PrüfenInnen then
+                  
+               elsif
+                 Gegnerdatenbank.GegnerListe (Reihenfolge (PrüfenAußen)).GeschwindigkeitGegner < Gegnerdatenbank.GegnerListe (Reihenfolge (PrüfenInnen)).GeschwindigkeitGegner
+                 and
+                   PrüfenAußen < PrüfenInnen
+               then
                   IDZwischenspeicher1 := Reihenfolge (PrüfenAußen);
                   IDZwischenspeicher2 := Reihenfolge (PrüfenInnen);
                   Reihenfolge (PrüfenAußen) := IDZwischenspeicher2;
                   Reihenfolge (PrüfenInnen) := IDZwischenspeicher1;
+                  
                else
                   null;
                end if;
@@ -60,15 +85,22 @@ package body Kampfsystem is
          end loop ReihenfolgePrüfenAußenSchleife;
 
          Put_Line ("Sie stehen folgenden Gegnern gegenüber:");
+         
          VorhandeneGegnerSchleife:
          for VorhandeneGegner in Gegner'Range loop
             MöglicheGegnerSchleife:
             for MöglicheGegner in Gegnerdatenbank.GegnerListe'Range loop
+               
                GegnerPlatz := 1;
-               if Gegner (VorhandeneGegner) = Gegnerdatenbank.GegnerListe (MöglicheGegner).ID and Gegnerdatenbank.GegnerListe (MöglicheGegner).ID /= 0 then
+               if
+                 Gegner (VorhandeneGegner) = Gegnerdatenbank.GegnerListe (MöglicheGegner).ID
+                 and
+                   Gegnerdatenbank.GegnerListe (MöglicheGegner).ID /= 0
+               then
                   Put_Line (Integer'Wide_Image (GegnerPlatz) & "." & To_Wide_String (Gegnerdatenbank.GegnerListe (MöglicheGegner).Name));
                   GegnerPlatz := GegnerPlatz + 1;
                   exit MöglicheGegnerSchleife;
+                  
                else
                   null;
                end if;
@@ -81,8 +113,9 @@ package body Kampfsystem is
 
          Wert := ImKampf.ImKampf;
 
-         case Wert is
-
+         case
+           Wert
+         is
             when -1 | 0 | 2 =>
                return Wert;
 
@@ -90,19 +123,20 @@ package body Kampfsystem is
                Nicht.Nicht;
 
             when 4 =>
-               null;--Info;
+               -- Info;
+               null;
 
             when 10 =>
                WelcherGegner;
 
-               case WenAngreifen is
-
+               case
+                 WenAngreifen
+               is
                when 1 .. 5 =>
                   KampfBerechnung;
 
                when others =>
                   null;
-                  
                end case;
                
             when 11 =>
@@ -112,8 +146,9 @@ package body Kampfsystem is
             when 12 .. 13 =>
                KampfBerechnung;
                
-               case Flucht is
-                     
+               case
+                 Flucht
+               is
                   when -1 =>
                      Put_Line ("Ihr Fluchtversuch scheitert.");
                   
@@ -127,52 +162,65 @@ package body Kampfsystem is
                                     
             when others =>
                null;
-
          end case;
          
       end loop KampfSchleife;
 
-      Put_Line ("Sollte niemals aufgerufen werden, Kampfsystem.Kampfschleife nach Schleife.");
-      return 0;
+      raise Program_Error;
 
    end Kampf;
 
 
 
-   procedure WelcherGegner is
-   begin
+   procedure WelcherGegner
+   is begin
       
       Put_Line ("Geben sie den Namen oder die Platznummer des Gegners ein:");
       Text := EinWort.EinWort;
 
       WelcherGegnerNameSchleife:
       for A in Gegner'Range loop
-         if Text = Gegnerdatenbank.GegnerListe (Gegner (A)).Name then
+         
+         if
+           Text = Gegnerdatenbank.GegnerListe (Gegner (A)).Name
+         then
             WenAngreifen := A;
             return;
+            
          else
             null;
          end if;
+         
       end loop WelcherGegnerNameSchleife;
 
       Wert := WortZuGanzeZahl.WortZuGanzeZahl (Text);
       WenAngreifenGegnerPlatz := 0;
 
-      case Wert is
+      case
+        Wert
+      is
          when 1 .. 5 =>
             WelcherGegnerNummerSchleife:
             for A in Gegner'Range loop
-               if Gegner (A) /= 0 then
+               
+               if
+                 Gegner (A) /= 0
+               then
                   WenAngreifenGegnerPlatz := WenAngreifenGegnerPlatz + 1;
-                  if WenAngreifenGegnerPlatz = Wert then
+                  if
+                    WenAngreifenGegnerPlatz = Wert
+                  then
                      WenAngreifen := Wert;
                      return;
+                     
                   else
                      null;
                   end if;
+                  
                else
                   null;
                end if;
+               
             end loop WelcherGegnerNummerSchleife;
 
          when others =>
@@ -187,10 +235,12 @@ package body Kampfsystem is
 
 
 
-   procedure KampfBerechnung is
-   begin
+   procedure KampfBerechnung
+   is begin
       
-      case Verteidigt is
+      case
+        Verteidigt
+      is
          when True =>
             null;
             
@@ -202,8 +252,8 @@ package body Kampfsystem is
    
    
    
-   procedure Angreifen is
-   begin
+   procedure Angreifen
+   is begin
       
       return;
       
@@ -211,8 +261,8 @@ package body Kampfsystem is
    
    
    
-   procedure Verteidigen is
-   begin
+   procedure Verteidigen
+   is begin
       
       return;
       
@@ -220,8 +270,8 @@ package body Kampfsystem is
 
 
 
-   procedure Gegenstand is
-   begin
+   procedure Gegenstand
+   is begin
       
       return;
       
@@ -229,8 +279,9 @@ package body Kampfsystem is
    
    
    
-   function Fliehen return Integer is
-   begin
+   function Fliehen
+     return Integer
+   is begin
       
       return 20;
       
@@ -238,25 +289,30 @@ package body Kampfsystem is
 
 
 
-   procedure GegnerBesiegtPrüfung is
-   begin
+   procedure GegnerBesiegtPrüfung
+   is begin
       
       GegnerPrüfenSchleife:
       for GegnerPrüfen in Gegner'Range loop
-         if Gegner (GegnerPrüfen) = 0 then
+         
+         if
+           Gegner (GegnerPrüfen) = 0
+         then
             GegnerBesiegt := True;
+            
          else
             GegnerBesiegt := False;
             exit GegnerPrüfenSchleife;
          end if;
+         
       end loop GegnerPrüfenSchleife;
       
    end GegnerBesiegtPrüfung;
      
      
      
-   procedure SpielerBesiegtPrüfung is
-   begin
+   procedure SpielerBesiegtPrüfung
+   is begin
       
       null;
       

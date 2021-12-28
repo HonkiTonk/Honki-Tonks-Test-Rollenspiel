@@ -1,7 +1,14 @@
-with Ada.Wide_Text_IO, Charaktere, Gegnerdatenbank, Ada.Strings.Wide_Unbounded, Zustaende, WortZuGanzeZahl, EinWort, Benutzen, ImKampf, Nicht, KampfBefehle;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package Kampfsystem is
+
+   type GegnerArray is array (1 .. 5) of Integer;
+
+   function Kampf
+     (GegnerExtern : in GegnerArray)
+      return Integer;
+
+private
 
    Läuft : Boolean;
    SpielerBesiegt : Boolean;
@@ -19,7 +26,6 @@ package Kampfsystem is
 
    Text : Unbounded_Wide_String;
 
-   type GegnerArray is array (1 .. 5) of Integer;
    Reihenfolge : GegnerArray;
    Gegner : GegnerArray;
 
@@ -31,7 +37,7 @@ package Kampfsystem is
    procedure SpielerBesiegtPrüfung;
    procedure WelcherGegner;
 
-   function Kampf (Gegner : in GegnerArray) return Integer;
-   function Fliehen return Integer;
+   function Fliehen
+     return Integer;
 
 end Kampfsystem;

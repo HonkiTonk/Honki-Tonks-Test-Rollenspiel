@@ -1,10 +1,20 @@
+with Ada.Directories;
+
+with EinWort;
+with JaNein;
+with WortZuGanzeZahl;
+with Falsch;
+
 package body Speichern is
 
-   procedure Speichern is
-   begin
+   procedure Speichern
+   is begin
       
-      if Ada.Directories.Exists (Speicherdateien) then
+      if
+        Ada.Directories.Exists (Speicherdateien)
+      then
          null;
+         
       else
          Ada.Directories.Create_Directory (New_Directory => "Speicherdateien");
       end if;
@@ -13,24 +23,39 @@ package body Speichern is
       Put_Line ("Zur Auswahl die Slotnummer oder den Namen eines bereits vorhandenen Speicherstandes eingeben:");
       
       for A in SpeicherständeListe'Range loop
-         if A > 0 then
+         
+         if
+           A > 0
+         then
             Put_Line (Integer'Wide_Image (A) & ". Slot - Name: " & To_Wide_String (SpeicherständeListe (A)));
+            
          else
             null;
          end if;
+         
       end loop;
       
-      Name := EinWort.EinWortOhneÄnderung;      
-      Slot := WortZuGanzeZahl.WortZuGanzeZahl (Name);
+      Namen := EinWort.EinWortOhneÄnderung;      
+      Slot := WortZuGanzeZahl.WortZuGanzeZahl (Namen);
       
-      case Slot is
+      case
+        Slot
+      is
          when SpeicherständeListe'Range =>
-            if SpeicherständeListe (Slot) /= "" and Slot > 0 then
+            if
+              SpeicherständeListe (Slot) /= ""
+              and
+                Slot > 0
+            then
                Sicherheitsabfrage (Slot);
                return;
-            elsif Slot > 0 then
+               
+            elsif
+              Slot > 0
+            then
                Schreiben (Slot);
                return;
+               
             else
                null;
             end if;
@@ -41,12 +66,20 @@ package body Speichern is
       
       SpeichernNachNamenSchleife:
       for A in SpeicherständeListe'Range loop
-         if SpeicherständeListe (A) = Name and SpeicherständeListe (A) /= "" and A > 0 then
+         
+         if
+           SpeicherständeListe (A) = Namen
+           and
+             SpeicherständeListe (A) /= ""
+           and A > 0
+         then
             Sicherheitsabfrage (A);
             return;
+            
          else
             null;
          end if;
+         
       end loop SpeichernNachNamenSchleife;
       
       Falsch.Falsch;
@@ -55,14 +88,18 @@ package body Speichern is
    
    
    
-   procedure Sicherheitsabfrage (Slotnummer : in Integer) is
-   begin
+   procedure Sicherheitsabfrage
+     (Slotnummer : in Integer)
+   is begin
             
       Put_Line ("Wollen sie den Spielstand " & To_Wide_String (SpeicherständeListe (Slotnummer)) & " überschreiben?");
       Put_Line ("Ja");
       Put_Line ("Nein");
       Überschreiben := JaNein.JaNeinEinfach;
-      case Überschreiben is
+      
+      case
+        Überschreiben
+      is
          when True =>
             Schreiben (Slotnummer);
                   
@@ -74,8 +111,9 @@ package body Speichern is
    
    
    
-   procedure Schreiben (Slotnummer : in Integer) is
-   begin
+   procedure Schreiben
+     (Slotnummer : in Integer)
+   is begin
       
       null;
       

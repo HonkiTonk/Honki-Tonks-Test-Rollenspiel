@@ -1,7 +1,10 @@
-with Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package InventarBefehle is
+
+   procedure InventarBefehle;
+
+private
 
    type InventarBefehleNamenArray is array (1 .. 23) of Unbounded_Wide_String;
    InventarBefehleNamen : InventarBefehleNamenArray := (To_Unbounded_Wide_String ("Beenden"), To_Unbounded_Wide_String ("Hauptmenü"), To_Unbounded_Wide_String ("Laden"),
@@ -12,7 +15,5 @@ package InventarBefehle is
                                                         To_Unbounded_Wide_String ("Helm"), To_Unbounded_Wide_String ("Hand"), To_Unbounded_Wide_String ("Schuh"),
                                                         To_Unbounded_Wide_String ("Benutzen"), To_Unbounded_Wide_String ("Ausrüsten"), To_Unbounded_Wide_String ("Ablegen"),
                                                         To_Unbounded_Wide_String ("Wegwerfen"), To_Unbounded_Wide_String ("Schließen"));
-
-   procedure InventarBefehle;
 
 end InventarBefehle;

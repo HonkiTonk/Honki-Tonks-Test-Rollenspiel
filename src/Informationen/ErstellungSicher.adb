@@ -1,7 +1,12 @@
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
+
+with Charaktere;
+
 package body ErstellungSicher is
 
-   procedure ErstellungSicher is
-   begin
+   procedure ErstellungSicher
+   is begin
       
       Put_Line ("Ihr Charakter hat jetzt folgende Eigenschaften:");
       Put_Line ("Name: " & To_Wide_String (Charaktere.Hauptcharakter.Name));
@@ -12,21 +17,28 @@ package body ErstellungSicher is
       Put_Line ("Attribute:");
       HauptwerteSchleife:
       for I in Charaktere.Hauptcharakter.Hauptwerte'Range loop
+         
          Put_Line ("    " & To_Wide_String (Charaktere.HauptwerteNamen (I)) & ": " & Integer'Wide_Image (Charaktere.Hauptcharakter.Hauptwerte (I)));
+         
       end loop HauptwerteSchleife;
 
       Put_Line ("Fertigkeiten:");
       FertigkeitenSchleife:
       for I in Charaktere.Hauptcharakter.Fertigkeiten'Range loop
+         
          Put_Line ("    " & To_Wide_String (Charaktere.FertigkeitenNamen (I)) & ": " & Integer'Wide_Image (Charaktere.Hauptcharakter.Fertigkeiten (I)));
+         
       end loop FertigkeitenSchleife;
 
       Put_Line ("Spezielle Eigenschaften:");
       SpezielleEigenschaftenSchleife:
       for I in Charaktere.Hauptcharakter.SpezielleEigenschaften'Range loop
          
-         if Charaktere.Hauptcharakter.SpezielleEigenschaften (I) = True then
+         if
+           Charaktere.Hauptcharakter.SpezielleEigenschaften (I) = True
+         then
             Put_Line ("    " & To_Wide_String (Charaktere.SpezielleEigenschaftenNamen (I)) & " ist ausgewählt.");
+            
          else
             null;
          end if;

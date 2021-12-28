@@ -1,10 +1,16 @@
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
+
+with Charaktere;
+
 package body Fertigkeiten is
 
-   procedure Fertigkeiten (Wert : in Integer) is
-   begin
+   procedure Fertigkeiten
+     (Wert : in Integer)
+   is begin
       
-      case Wert is
-
+      case
+        Wert
+      is
          when 0 =>
             Put_Line ("Es existieren 17 Charakterfertigkeiten.");
             Put_Line ("Deren Werten können zwischen 1 und 100 liegen.");
@@ -100,7 +106,6 @@ package body Fertigkeiten is
 
          when others =>
             Put_Line ("Sollte niemals aufgerufen werden.");
-            
       end case;
       
    end Fertigkeiten;

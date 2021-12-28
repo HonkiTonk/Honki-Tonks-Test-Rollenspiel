@@ -1,10 +1,16 @@
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
+
+with Charaktere;
+
 package body Hauptwerte is
 
-   procedure Hauptwerte (Wert : in Integer) is
-   begin
+   procedure Hauptwerte
+     (Wert : in Integer)
+   is begin
       
-      case Wert is
-
+      case
+        Wert
+      is
          when 0 =>
             Put_Line ("Es existieren 7 Charakterattribute.");
             Put_Line ("Deren Werten können zwischen 1 und 10 liegen.");
@@ -49,8 +55,7 @@ package body Hauptwerte is
             Put_Line ("Aktuelles Glück:" & Integer'Wide_Image (Charaktere.Hauptcharakter.Hauptwerte (Wert)));
 
          when others =>
-            Put_Line ("Sollte niemals aufgerufen werden.");
-            
+            raise Program_Error;
       end case;
    
    end Hauptwerte;

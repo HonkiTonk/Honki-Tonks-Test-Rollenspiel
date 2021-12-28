@@ -1,26 +1,43 @@
+with Schwierigkeitsgrad;
+
 package body GegnerFestlegen is
 
-   function GegnerZufall (Ort : in Integer) return Integer is
-   begin
+   function GegnerZufall
+     (Ort : in Integer)
+      return Integer
+   is begin
       
-      case Schwierigkeitsgrad.Schwierigkeit is
+      case
+        Schwierigkeitsgrad.Schwierigkeit
+      is
          when 1 =>
-            if Ort = 101 then
+            if
+              Ort = 101
+            then
                for Position in Gegner'Range loop
+                  
                   Reset (GegnerGenerator);
-                  if Position > 1 then
+                  if
+                    Position > 1
+                  then
                      Gegner (Position) := Random (GegnerGenerator);
+                     
                   else
                      Gegner (Position) := Random (GegnerGenerator);
-                     if Gegner (Position) = 0 then
+                     if
+                       Gegner (Position) = 0
+                     then
                         Gegner (Position) := 1;
+                        
                      else
                         null;
                      end if;
                   end if;
+                  
                end loop;
+               
             else
-               Put_Line ("Sollte niemals aufgerufen werden, GegnerFestlegen.GegnerZufall case Schwierigkeitsgrad.Schwierigkeit 1 => else.");
+               raise Program_Error;
             end if;
             
          when 2 =>
@@ -30,8 +47,7 @@ package body GegnerFestlegen is
             null;
             
          when others =>
-            Put_Line ("Sollte niemals aufgerufen werden, GegnerFestlegen.GegnerZufall case Schwierigkeitsgrad.Schwierigkeit others =>.");
-            
+            raise Program_Error;
       end case;
 
       Wert := Kampfsystem.Kampf (Gegner);
@@ -42,8 +58,9 @@ package body GegnerFestlegen is
    
    
    
-   function GegnerFest (Ort : in Integer) return Integer is
-   begin
+   function GegnerFest
+     return Integer
+   is begin
       
       return 0;
       

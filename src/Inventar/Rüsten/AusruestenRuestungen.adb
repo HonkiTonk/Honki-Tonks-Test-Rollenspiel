@@ -1,9 +1,15 @@
+with Charaktere;
+with Gegenstanddatenbank;
+
 package body AusruestenRuestungen is
 
-   procedure AusrüstenRüstungen (IDPosition : in Integer) is
-   begin
+   procedure AusrüstenRüstungen
+     (IDPosition : in Integer)
+   is begin
       
-      case Charaktere.Hauptcharakter.Inventar (IDPosition).ID is
+      case
+        Charaktere.Hauptcharakter.Inventar (IDPosition).ID
+      is
          when Gegenstanddatenbank.HelmGegenstandListe'Range =>
             ZwischenspeicherID := Charaktere.Hauptcharakter.RüstungsteileAusgerüstet (1);
             Charaktere.Hauptcharakter.RüstungsteileAusgerüstet (1) := Charaktere.Hauptcharakter.Inventar (IDPosition).ID;
@@ -25,7 +31,7 @@ package body AusruestenRuestungen is
             Charaktere.Hauptcharakter.Inventar (IDPosition).ID := ZwischenspeicherID;
             
          when others =>
-            Put_Line ("Sollte niemals aufgerufen werden AusruestenRuestungen.AusrüstenRüstungen when others =>");
+            raise Program_Error;
       end case;
       
    end AusrüstenRüstungen;

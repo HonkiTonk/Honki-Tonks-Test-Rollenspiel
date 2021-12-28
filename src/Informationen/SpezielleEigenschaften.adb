@@ -1,10 +1,14 @@
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
+
 package body SpezielleEigenschaften is
 
-   procedure SpezielleEigenschaften (Wert : in Integer) is
-   begin
+   procedure SpezielleEigenschaften
+     (Wert : in Integer)
+   is begin
       
-      case Wert is
-         
+      case
+        Wert
+      is
          when 0 =>
             Put_Line ("Es existieren 11 spezielle Eigenschaften.");
             Put_Line ("Davon sind 2 auswählbar.");
@@ -50,8 +54,7 @@ package body SpezielleEigenschaften is
             Put_Line ("");
 
          when others =>
-            Put_Line ("Sollte niemals aufgerufen werden.");
-            
+            raise Program_Error;
       end case;
       
    end SpezielleEigenschaften;

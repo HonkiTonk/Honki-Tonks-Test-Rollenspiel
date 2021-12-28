@@ -1,7 +1,10 @@
-with Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package StandardBefehle is
+
+   procedure StandardBefehle;
+   
+private
    
    type StandardBefehleNamenArray is array (1 .. 18) of Unbounded_Wide_String;
    StandardBefehleNamen : StandardBefehleNamenArray := (To_Unbounded_Wide_String ("Beenden"), To_Unbounded_Wide_String ("Hauptmenü"), To_Unbounded_Wide_String ("Laden"),
@@ -10,7 +13,5 @@ package StandardBefehle is
                                                         To_Unbounded_Wide_String ("Öffnen"), To_Unbounded_Wide_String ("Schließen"), To_Unbounded_Wide_String ("Gehe"),
                                                         To_Unbounded_Wide_String ("Schlafen"), To_Unbounded_Wide_String ("Warte"), To_Unbounded_Wide_String ("Charakter"),
                                                         To_Unbounded_Wide_String ("Aufstieg"), To_Unbounded_Wide_String ("Quest"));
-
-   procedure StandardBefehle;
    
 end StandardBefehle;

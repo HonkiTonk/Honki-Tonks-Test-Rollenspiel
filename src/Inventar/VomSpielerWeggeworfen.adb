@@ -1,15 +1,16 @@
 package body VomSpielerWeggeworfen is
 
-   procedure VomSpielerWeggeworfen is
-   begin
+   procedure VomSpielerWeggeworfen
+   is begin      
       
-      case Ort is
+      case
+        Ort
+      is
          when 100 =>
             null;
             
          when others =>
-            Put_Line ("Sollte niemals aufgerufen werden VomSpielerWeggeworfen.VomSpielerWeggeworfen when others =>");
-            
+            raise Program_Error;
       end case;
       
    end VomSpielerWeggeworfen;

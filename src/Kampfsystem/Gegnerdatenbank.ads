@@ -1,5 +1,4 @@
-with Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package Gegnerdatenbank is
 
@@ -21,8 +20,7 @@ package Gegnerdatenbank is
    end record;
 
    type GegnerListeArray is array (0 .. 5) of Gegner;
-
-   GegnerListe : GegnerListeArray := ((0, 0, 0, 0, 0, 0, 0, 0.00, 0.00, Ada.Strings.Wide_Unbounded.To_Unbounded_Wide_String ("Nichtssgköhslgjbvlsanfaäojfäaooipagn")),
+   GegnerListe : GegnerListeArray := ((0, 0, 0, 0, 0, 0, 0, 0.00, 0.00, Ada.Strings.Wide_Unbounded.To_Unbounded_Wide_String ("Nichts")),
                                       (1, 10, 10, 2, 2, 2, 0, 1.25, 0.10, Ada.Strings.Wide_Unbounded.To_Unbounded_Wide_String ("Einfacher Testgegner")),
                                       (2, 20, 20, 4, 4, 4, 1, 1.50, 0.25, Ada.Strings.Wide_Unbounded.To_Unbounded_Wide_String ("Normaler Testgegner")),
                                       (3, 40, 40, 8, 8, 8, 2, 2.00, 0.50, Ada.Strings.Wide_Unbounded.To_Unbounded_Wide_String ("Schwerer Testgegner")),

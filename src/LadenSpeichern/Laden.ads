@@ -1,11 +1,17 @@
-with Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded, GlobaleVariablen, JaNein, WortZuGanzeZahl, Speichern, EinWort, Falsch;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package Laden is
 
+   function Laden
+     (Hauptmenü : in Boolean)
+      return Boolean;
+
+private
+
    Buffer : Wide_Character;
 
-   Name : Unbounded_Wide_String;
+   Namen : Unbounded_Wide_String;
 
    Slot : Integer;
 
@@ -15,8 +21,10 @@ package Laden is
 
    Datei : File_Type;
 
-   function Laden (Hauptmenü : in Boolean) return Boolean;
-   function Sicherheitsabfrage (Slotnummer : in Integer) return Boolean;
+   function Sicherheitsabfrage
+     (Slotnummer : in Integer)
+      return Boolean;
+
    procedure Lädt;
 
 end Laden;

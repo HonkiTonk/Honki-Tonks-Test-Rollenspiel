@@ -1,8 +1,11 @@
-with Ada.Wide_Text_IO, Charaktere, SortierenInventar, Ausgeruestet, Ada.Strings.Wide_Unbounded, EinWort, GesamterBesitz, Gegenstanddatenbank, Ada.Strings.Wide_Maps.Wide_Constants, MengenAngabe;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package Wegwerfen is
-
+   
+   procedure Aufteilung;
+   
+private
+   
    Prüfung : Boolean := True;
    
    Anzahl : Integer;
@@ -12,7 +15,6 @@ package Wegwerfen is
 
    GegenstandName : Unbounded_Wide_String;
 
-   procedure Aufteilung;
    procedure WegwerfenSonstiges;
    procedure WegwerfenHeil;
    procedure WegwerfenWaffen;
@@ -22,8 +24,15 @@ package Wegwerfen is
    procedure WegwerfenHand;
    procedure WegwerfenSchuh;
    procedure WegwerfenQuest; -- Geht nur automatisch
-   procedure Text (Auswahl : in Integer);
    
-   function WegwerfenAutomatisch (ID, Menge : in Integer) return Boolean;
-
+   procedure Text
+     (Auswahl : in Integer);
+   
+   
+   
+   function WegwerfenAutomatisch
+     (ID : in Integer;
+      Menge : in Integer)
+      return Boolean;
+   
 end Wegwerfen;

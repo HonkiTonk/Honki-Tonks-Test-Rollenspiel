@@ -1,7 +1,18 @@
-package body Ausruesten is
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
 
-   procedure Ausrüsten is -- hier mit Tasks beides gleichzeitig prüfen und dann den schnelleren Task den langsameren beenden lassen?
-   begin
+with Charaktere;
+with EinWort;
+with Gegenstanddatenbank;
+with WortZuGanzeZahl;
+with GesamterBesitz;
+with AusruestenWaffen;
+with AusruestenRuestungen;
+
+package body Ausruesten is
+   
+   -- hier mit Tasks beides gleichzeitig prüfen und dann den schnelleren Task den langsameren beenden lassen?
+   procedure Ausrüsten
+   is begin
 
       GesamterBesitz.GesamterBesitz;
       Put_Line ("Was möchten sie ausrüsten?");
@@ -10,8 +21,15 @@ package body Ausruesten is
       
       AusrüstenSchleife:
       for IDPosition in Charaktere.Hauptcharakter.Inventar'Range loop
-         if Charaktere.Hauptcharakter.Inventar (IDPosition).Name = GegenstandName and Charaktere.Hauptcharakter.Inventar (IDPosition).ID /= 0 then
-            case Charaktere.Hauptcharakter.Inventar (IDPosition).ID is
+         
+         if
+           Charaktere.Hauptcharakter.Inventar (IDPosition).Name = GegenstandName
+           and
+             Charaktere.Hauptcharakter.Inventar (IDPosition).ID /= 0
+         then
+            case
+              Charaktere.Hauptcharakter.Inventar (IDPosition).ID
+            is
                when Gegenstanddatenbank.WaffenGegenstandListe'Range =>
                   AusruestenWaffen.AusrüstenWaffen (IDPosition);
                   return;
@@ -23,19 +41,26 @@ package body Ausruesten is
                when others =>
                   Put_Line ("Es können nur Waffen und Rüstungsteile ausgerüstet werden.");
                   return;
-                  
             end case;
+            
          else
             null;
          end if;
+         
       end loop AusrüstenSchleife;
       
       Platznummer := WortZuGanzeZahl.WortZuGanzeZahl (GegenstandName);
       
-      case Platznummer is
+      case
+        Platznummer
+      is
          when 1 .. 30 =>
-            if Charaktere.Hauptcharakter.Inventar (Platznummer).ID /= 0 then
-               case Charaktere.Hauptcharakter.Inventar (Platznummer).ID is
+            if
+              Charaktere.Hauptcharakter.Inventar (Platznummer).ID /= 0
+            then
+               case
+                 Charaktere.Hauptcharakter.Inventar (Platznummer).ID
+               is
                   when Gegenstanddatenbank.WaffenGegenstandListe'Range =>
                      AusruestenWaffen.AusrüstenWaffen (Platznummer);
                      return;
@@ -48,6 +73,7 @@ package body Ausruesten is
                      Put_Line ("Es können nur Waffen und Rüstungsteile ausgerüstet werden.");
                      return;
                end case;
+               
             else
                Put_Line ("Auf diesem Platz befindet sich kein Gegenstand.");
             end if;
