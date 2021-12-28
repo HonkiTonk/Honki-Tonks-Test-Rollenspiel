@@ -1,7 +1,7 @@
 package body SpezielleEigenschaftenAuswirkungen is
 
-   procedure SpezielleEigenschaftenAuswirkungen is
-   begin
+   procedure SpezielleEigenschaftenAuswirkungen
+   is begin
 
       null;
 

@@ -3,8 +3,11 @@ use Ada.Strings.Wide_Unbounded;
 
 package ImCharakter is
 
-   Text : Unbounded_Wide_String;
+   function ImCharakter
+     return Integer;
 
-   function ImCharakter return Integer;
+private
+
+   Text : Unbounded_Wide_String;
 
 end ImCharakter;

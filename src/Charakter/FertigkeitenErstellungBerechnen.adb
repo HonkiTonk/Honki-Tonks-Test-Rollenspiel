@@ -1,11 +1,15 @@
+with Charaktere;
+
 package body FertigkeitenErstellungBerechnen is
 
-   procedure FertigkeitenErstellungBerechnen is
-   begin
+   procedure FertigkeitenErstellungBerechnen
+   is begin
 
       HauptwerteSpeicherSchleife:
       for I in HauptwerteSpeicher'Range loop
+
          HauptwerteSpeicher (I) := Charaktere.Hauptcharakter.Hauptwerte (I);
+
       end loop HauptwerteSpeicherSchleife;
 
       -- 1 = Stärke, 2 = Wahrnehmung, 3 = Ausdauer, 4 = Charisma, 5 = Intelligenz, 6 = Beweglichkeit, 7 = Glück

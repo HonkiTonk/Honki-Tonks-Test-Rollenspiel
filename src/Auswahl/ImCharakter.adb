@@ -1,7 +1,8 @@
 package body ImCharakter is
 
-   function ImCharakter return Integer is
-   begin
+   function ImCharakter
+     return Integer
+   is begin
 
       return 0;
 

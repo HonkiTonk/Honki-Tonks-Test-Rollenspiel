@@ -1,7 +1,11 @@
-with Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded, HauptwerteAendern, FertigkeitenAendern, Hauptwerte, SpezielleEigenschaftenAuswirkungen, ErstellungSicher, JaNein, SpezielleEigenschaftenAendern, Charaktere, Ada.Integer_Text_IO, Laden, StandardAuswahl, Nicht, Falsch, Fertigkeiten, SpezielleEigenschaften, FertigkeitenErstellungBerechnen;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package Charaktererstellung is
+
+   function Erstellung
+     return Integer;
+
+private
 
    ErstellungLäuft : Boolean := True;
    NameAuswahlLäuft : Boolean := True;
@@ -14,7 +18,5 @@ package Charaktererstellung is
    Wert : Integer;
 
    CharaktererstellungEingabe : Unbounded_Wide_String;
-
-   function Erstellung return Integer;
 
 end Charaktererstellung;

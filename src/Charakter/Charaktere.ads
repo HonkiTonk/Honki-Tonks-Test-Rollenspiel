@@ -1,5 +1,4 @@
-with Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package Charaktere is
 
@@ -18,7 +17,8 @@ package Charaktere is
 
    end record;
 
-   type QuestArray is array (1 .. 100) of QuestRecord; -- Immer auf der Größe Questdatenbank.QuestListe setzen
+   -- Immer auf der Größe Questdatenbank.QuestListe setzen
+   type QuestArray is array (1 .. 100) of QuestRecord;
 
    type InventarArray is array (1 .. 30) of InventarRecord;
 

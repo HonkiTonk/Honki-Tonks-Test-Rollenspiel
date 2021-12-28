@@ -1,10 +1,12 @@
-with Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded, EinWort, Falsch;
-use Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package ImAusruhen is
 
-   Text : Unbounded_Wide_String;
+   function ImAusruhen
+     return Integer;
 
-   function ImAusruhen return Integer;
+private
+
+   Text : Unbounded_Wide_String;
 
 end ImAusruhen;

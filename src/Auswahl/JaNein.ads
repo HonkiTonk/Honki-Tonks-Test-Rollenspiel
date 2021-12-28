@@ -1,13 +1,17 @@
-with Ada.Strings.Wide_Unbounded, Ada.Wide_Text_IO, EinWort, Falsch;
-use Ada.Strings.Wide_Unbounded, Ada.Wide_Text_IO;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package JaNein is
+
+   function JaNein
+     return Integer;
+
+   function JaNeinEinfach
+     return Boolean;
+
+private
 
    Text : Unbounded_Wide_String;
 
    Laden : Boolean;
-
-   function JaNein return Integer;
-   function JaNeinEinfach return Boolean;
 
 end JaNein;

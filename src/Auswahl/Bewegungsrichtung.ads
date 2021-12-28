@@ -1,12 +1,13 @@
-with Ada.Strings.Wide_Unbounded, EinWort, Falsch;
-use Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package Bewegungsrichtung is
+
+   function Bewegungsrichtung return Integer;
+
+private
 
    Text : Unbounded_Wide_String;
 
    Laden : Boolean;
-
-   function Bewegungsrichtung return Integer;
 
 end Bewegungsrichtung;

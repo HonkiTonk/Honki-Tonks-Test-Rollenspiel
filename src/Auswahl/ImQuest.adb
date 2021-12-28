@@ -1,7 +1,8 @@
 package body ImQuest is
 
-   function ImQuest return Integer is
-   begin
+   function ImQuest
+     return Integer
+   is begin
       
       return 0;
       

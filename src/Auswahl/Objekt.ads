@@ -1,12 +1,15 @@
-with Ada.Strings.Wide_Unbounded, EinWort, Falsch;
-use Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package Objekt is
+
+   function Objekt
+     (AktuellerOrt : in Float)
+      return Integer;
+
+private
 
    Text : Unbounded_Wide_String;
 
    Laden : Boolean;
-
-   function Objekt (AktuellerOrt : in Float) return Integer;
 
 end Objekt;

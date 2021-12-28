@@ -3,8 +3,11 @@ use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
 
 package Kommazahl is
 
-   EinWortEingabeString : Unbounded_Wide_String;
+   function Kommazahl
+     return Unbounded_Wide_String;
 
-   function Kommazahl return Unbounded_Wide_String;
+private
+
+   EinWortEingabeString : Unbounded_Wide_String;
 
 end Kommazahl;

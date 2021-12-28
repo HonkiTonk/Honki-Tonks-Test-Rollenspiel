@@ -1,7 +1,26 @@
+with Ada.Wide_Text_IO; use Ada.Wide_Text_IO;
+
+with HauptwerteAendern;
+with FertigkeitenAendern;
+with Hauptwerte;
+with SpezielleEigenschaftenAuswirkungen;
+with ErstellungSicher;
+with JaNein;
+with SpezielleEigenschaftenAendern;
+with Charaktere;
+-- with Laden;
+with StandardAuswahl;
+with Nicht;
+with Falsch;
+with Fertigkeiten;
+with SpezielleEigenschaften;
+with FertigkeitenErstellungBerechnen;
+
 package body Charaktererstellung is
 
-   function Erstellung return Integer is
-   begin
+   function Erstellung
+     return Integer
+   is begin
 
       NameAuswahlLäuft := True;
       GeschlechtAuswahlLäuft := True;
@@ -18,12 +37,12 @@ package body Charaktererstellung is
       Put_Line ("Willkommen zur Charaktererstellung.");
 
       ErstellungSchleife:
-      while ErstellungLäuft = True loop
+      while ErstellungLäuft loop
 
          SicherLäuft := True;
 
          NameAuswahlSchleife:
-         while NameAuswahlLäuft = True loop
+         while NameAuswahlLäuft loop
 
             Put_Line ("Wie soll ihr Charakter heißen?");
             New_Line;
@@ -34,23 +53,26 @@ package body Charaktererstellung is
          end loop NameAuswahlSchleife;
 
          GeschlechtSchleife:
-         while GeschlechtAuswahlLäuft = True loop
+         while GeschlechtAuswahlLäuft loop
 
             Put_Line ("Ist ihr Charakter männlich oder weiblich?");
             New_Line;
 
             Wert := StandardAuswahl.StandardAuswahl;
 
-            case Wert is
-
+            case
+              Wert
+            is
                when -1 | 0 =>
                   return Wert;
 
                when 2 =>
-                  null;--Laden.Laden;
+                  -- Laden.Laden;
+                  null;
 
                when 3 =>
-                  Nicht.Nicht; -- Speichern
+                  -- Speichern
+                  Nicht.Nicht;
 
                when 4 =>
                   Put_Line ("M oder Mann für männlich oder F oder Frau für weiblich eingeben.");
@@ -65,7 +87,6 @@ package body Charaktererstellung is
 
                when others =>
                   null;
-
             end case;
 
          end loop GeschlechtSchleife;
@@ -75,20 +96,23 @@ package body Charaktererstellung is
          Hauptwerte.Hauptwerte (0);
 
          HauptwerteSchleife:
-         while HauptwerteLäuft = True loop
+         while HauptwerteLäuft loop
 
             Wert := HauptwerteAendern.HauptwerteÄndern (1);
 
-            case Wert is
-
+            case
+              Wert
+            is
                when -1 | 0 =>
                   return Wert;
 
                when 2 =>
-                  null;--Laden.Laden;
+                  -- Laden.Laden;
+                  null;
 
                when 3 =>
-                  Nicht.Nicht; -- Speichern
+                  -- Speichern
+                  Nicht.Nicht;
 
                when 4 =>
                   Hauptwerte.Hauptwerte (0);
@@ -101,7 +125,6 @@ package body Charaktererstellung is
 
                when others =>
                   Falsch.Falsch;
-
             end case;
 
          end loop HauptwerteSchleife;
@@ -110,20 +133,23 @@ package body Charaktererstellung is
          Fertigkeiten.Fertigkeiten (0);
 
          FertigkeitenSchleife:
-         while FertigkeitenLäuft = True loop
+         while FertigkeitenLäuft loop
 
             Wert := FertigkeitenAendern.FertigkeitenÄndern (1);
 
-            case Wert is
-
+            case
+              Wert
+            is
                when -1 | 0 =>
                   return Wert;
 
                when 2 =>
-                  null;--Laden.Laden;
+                  -- Laden.Laden;
+                  null;
 
                when 3 =>
-                  Nicht.Nicht; -- Speichern
+                  -- Speichern
+                  Nicht.Nicht;
 
                when 4 =>
                   Fertigkeiten.Fertigkeiten (0);
@@ -136,7 +162,6 @@ package body Charaktererstellung is
 
                when others =>
                   Falsch.Falsch;
-
             end case;
 
          end loop FertigkeitenSchleife;
@@ -144,20 +169,23 @@ package body Charaktererstellung is
          SpezielleEigenschaften.SpezielleEigenschaften (0);
 
          SpezielleEigenschaftenSchleife:
-         while SpezielleEigenschaftenLäuft = True loop
+         while SpezielleEigenschaftenLäuft loop
 
-            Wert := SpezielleEigenschaftenAendern.SpezielleEigenschaftenÄndern (1);
+            Wert := SpezielleEigenschaftenAendern.SpezielleEigenschaftenÄndern ;
 
-            case Wert is
-
+            case
+              Wert
+            is
                when -1 | 0 =>
                   return Wert;
 
                when 2 =>
-                  null;--Laden.Laden;
+                  -- Laden.Laden;
+                  null;
 
                when 3 =>
-                  Nicht.Nicht; -- Speichern
+                  -- Speichern
+                  Nicht.Nicht;
 
                when 4 =>
                   SpezielleEigenschaften.SpezielleEigenschaften (0);
@@ -170,7 +198,6 @@ package body Charaktererstellung is
 
                when others =>
                   null;
-
             end case;
 
          end loop SpezielleEigenschaftenSchleife;
@@ -179,20 +206,23 @@ package body Charaktererstellung is
          ErstellungSicher.ErstellungSicher;
 
          SicherSchleife:
-         while SicherLäuft = True loop
+         while SicherLäuft loop
 
             Wert := JaNein.JaNein;
 
-            case Wert is
-
+            case
+              Wert
+            is
                when -1 | 0 =>
                   return Wert;
 
                when 2 =>
-                  null;--Laden.Laden;
+                  -- Laden.Laden;
+                  null;
 
                when 3 =>
-                  Nicht.Nicht; -- Speichern
+                  -- Speichern
+                  Nicht.Nicht;
 
                when 4 =>
                   ErstellungSicher.ErstellungSicher;
@@ -222,11 +252,9 @@ package body Charaktererstellung is
 
                when others =>
                   null;
-
             end case;
 
          end loop SicherSchleife;
-
       end loop ErstellungSchleife;
 
       return 0;

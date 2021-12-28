@@ -1,12 +1,14 @@
-with Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded, EinWort, Falsch, KampfBefehle;
-use Ada.Wide_Text_IO, Ada.Strings.Wide_Unbounded;
+with Ada.Strings.Wide_Unbounded; use Ada.Strings.Wide_Unbounded;
 
 package ImKampf is
+
+   function ImKampf
+     return Integer;
+
+private
 
    Text : Unbounded_Wide_String;
 
    Laden : Boolean;
-
-   function ImKampf return Integer;
 
 end ImKampf;
