@@ -9,8 +9,17 @@ project Testprojekt is
    end Naming;
 
    package Compiler is
-      for Switches ("ada") use ("-gnatW8");
+      for Switches ("ada") use ("-gnatW8", "-gnat2020", "-gnatf", "-O", "-gnatVacdefimoprst", 
+         "-gnatwe.a.b.c_cd.df.fg.gh.hi.ij.j_rz.zy.xx.ww.vv.uu.rr.qq.pp.oo.m.nm.ll.kk.st.tac", "-gnatyL7aACdefhiklM222npOsrSx");
    end Compiler;
+
+   package Prove is
+      for Proof_Switches ("ada") use ("-j4");
+   end Prove;
+
+   package Builder is
+      for Switches ("ada") use ("-j4", "-k", "-s", "-C");
+   end Builder;
 
 end Testprojekt;
 
