@@ -1,9 +1,7 @@
-# Test-Rollenspiel
-Das erste Spiel das ich in Ada angefangen habe zu entwickeln. Es ist grauenhaft, unübersichtlich und wird nicht weiterentwickelt.
+# Test-Rollenspiel - Version: 0.00.0060
+Das erste Spiel das ich in Ada angefangen habe zu entwickeln. Es ist grauenhaft, unübersichtlich und wird nicht weiterentwickelt. Allerdings passe ich manchmal die Codeformatierung und Benennungen an und mache den Code kompatibel mit neuen Ada Versionen.
 
-The first game I started developing in Ada. It is horrific, confusing and will not be developed any further.
-
-Version: 0.00.0050
+The first game I started developing in Ada. It is horrific, confusing and will not be developed any further. However, I sometimes adjust the code formatting and naming and make the code compatible with new Ada versions.
 
 Mich unterstützen/Support me:
 
